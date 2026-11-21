@@ -27,7 +27,7 @@ const portfolio = [
 
 export default function CvOverview() {
   return (
-    <div>
+    <div className="flex w-full flex-col gap-8 px-5 py-5 sm:px-10">
       <section aria-labelledby="portfolio-heading">
         <p className="mb-2 text-sm font-semibold uppercase tracking-[0.16em] text-zinc-500 dark:text-zinc-400">
           Portfolio
@@ -39,6 +39,7 @@ export default function CvOverview() {
                 aria-label={`Visit ${name}`}
                 className="group flex h-full flex-col justify-between rounded-2xl border border-solid border-black/[.08] p-4 transition-colors hover:border-transparent hover:bg-black/[.04] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground dark:border-white/[.145] dark:hover:bg-[#1a1a1a]"
                 href={url}
+                target="_blank"
               >
                 <div className="flex items-start justify-between gap-3">
                   <div>
