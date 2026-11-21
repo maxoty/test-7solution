@@ -114,7 +114,7 @@ export default function FruitVegetableTodo() {
   }
 
   return (
-    <div>
+    <div className="flex w-full flex-col gap-8 px-5 py-5 sm:px-10">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         <section aria-labelledby="available-items-heading">
           <h3

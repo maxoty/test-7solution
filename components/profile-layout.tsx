@@ -23,7 +23,7 @@ export default function ProfileLayout({
           <Link href="/">
             <Image
               className="size-24 shrink-0 rounded-full object-cover sm:size-[120px]"
-              src="/profile.jpeg"
+              src="/profile.png"
               alt="Profile picture"
               width={120}
               height={120}
@@ -43,7 +43,7 @@ export default function ProfileLayout({
         </header>
         <nav
           aria-label="Profile sections"
-          className="flex w-full flex-row pb-7 text-base font-medium sm:px-10 sm:gap-3"
+          className="sticky top-0 z-20 flex w-full flex-row border-b border-black/[.06] bg-white/95 sm:pb-4 sm:pt-2 text-base font-medium backdrop-blur dark:border-white/[.1] dark:bg-black/95 sm:px-10 sm:gap-3"
         >
           {tabs.map(({ href, label, value }) => {
             const isActive = activeTab === value;
@@ -65,7 +65,7 @@ export default function ProfileLayout({
           })}
         </nav>
         {children && (
-          <section className="w-full px-5 pb-10 sm:px-10">{children}</section>
+          <section className="w-full">{children}</section>
         )}
       </main>
     </div>
