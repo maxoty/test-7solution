@@ -65,7 +65,7 @@ export default function ProfileLayout({
           })}
         </nav>
         {children && (
-          <section className="w-full">{children}</section>
+          <section className="flex w-full flex-1 flex-col">{children}</section>
         )}
       </main>
     </div>

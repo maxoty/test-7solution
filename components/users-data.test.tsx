@@ -158,7 +158,9 @@ describe("UsersData", () => {
   it("shows loading state before the complete response is ready", () => {
     renderUsers({ hasData: false, isLoading: true });
 
-    expect(screen.getByText("Loading all users…")).toBeDefined();
+    const loadingState = screen.getByText("Loading all users…");
+    expect(loadingState.className).toContain("items-center");
+    expect(loadingState.className).toContain("justify-center");
   });
 
   it("allows retry when the initial request fails", () => {
@@ -168,9 +170,10 @@ describe("UsersData", () => {
       hasData: false,
     });
 
-    expect(screen.getByRole("alert").textContent).toContain(
-      "Network unavailable",
-    );
+    const errorState = screen.getByRole("alert");
+    expect(errorState.textContent).toContain("Network unavailable");
+    expect(errorState.className).toContain("items-center");
+    expect(errorState.className).toContain("justify-center");
     fireEvent.click(screen.getByRole("button", { name: "Try again" }));
     expect(onRetry).toHaveBeenCalledOnce();
   });
@@ -196,6 +199,7 @@ describe("UsersData", () => {
     ).toContain("whitespace-nowrap");
     const engineeringTab = screen.getByRole("tab", { name: /Engineering/ });
     expect(engineeringTab.className).toContain("w-max");
+    expect(engineeringTab.className).toContain("cursor-pointer");
     expect(engineeringTab.className).not.toContain("flex-1");
     expect(
       screen.getByText(

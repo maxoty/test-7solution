@@ -253,7 +253,7 @@ export default function UsersData({
     return (
       <p
         aria-live="polite"
-        className="text-sm text-zinc-500 dark:text-zinc-400"
+        className="flex flex-1 items-center justify-center px-5 py-5 text-center text-sm text-zinc-500 dark:text-zinc-400"
       >
         Loading all users…
       </p>
@@ -262,7 +262,10 @@ export default function UsersData({
 
   if (error && !hasData) {
     return (
-      <div className="space-y-3" role="alert">
+      <div
+        className="flex flex-1 flex-col items-center justify-center gap-3 px-5 py-5 text-center"
+        role="alert"
+      >
         <p className="text-sm text-red-700 dark:text-red-400">
           Could not load users: {error}
         </p>
@@ -336,7 +339,7 @@ export default function UsersData({
                 <button
                   aria-controls={`department-panel-${index}`}
                   aria-selected={isActive}
-                  className={`w-max flex-none whitespace-nowrap border-b-2 px-3 py-3 text-sm font-medium transition-colors ${
+                  className={`w-max flex-none cursor-pointer whitespace-nowrap border-b-2 px-3 py-3 text-sm font-medium transition-colors ${
                     isActive
                       ? "border-foreground text-zinc-950 dark:text-zinc-50"
                       : "border-transparent text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"

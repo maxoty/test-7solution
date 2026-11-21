@@ -29,8 +29,18 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Deploy on Vercel with GitHub Actions
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The `.github/workflows/ci-cd.yml` workflow runs lint, tests, and a production build on pull requests and pushes to `main`. After those checks pass, it deploys pull requests as Vercel Preview deployments and pushes to `main` as Production deployments. Preview deployments are skipped for pull requests from forks because GitHub does not expose repository secrets to those workflows.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### One-time setup
+
+1. Create or import this repository as a project in [Vercel](https://vercel.com/new), using the repository root as the project root.
+2. Link the local repository to the Vercel project with `npx vercel link`. In the Vercel dashboard, make sure the project's Git integration will not also deploy the same commits automatically.
+3. Add these repository secrets under **GitHub → Settings → Secrets and variables → Actions**:
+   - `VERCEL_TOKEN`: a token created in your Vercel account settings.
+   - `VERCEL_ORG_ID`: the `orgId` from `.vercel/project.json`.
+   - `VERCEL_PROJECT_ID`: the `projectId` from `.vercel/project.json`.
+4. Push to `main` to deploy to Production, or open a pull request from a branch in this repository to create a Preview deployment.
+
+The `.vercel` directory is ignored by Git; do not commit its project file or your Vercel token.
